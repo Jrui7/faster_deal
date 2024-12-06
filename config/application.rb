@@ -26,5 +26,6 @@ module FasterDeal
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.assets.enabled = true
+    config.assets.initialize_on_precompile = false
   end
 end
