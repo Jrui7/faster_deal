@@ -1,10 +1,315 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+  --neon-blue: #00ffff;
+  --neon-pink: #ff00ff;
+  --neon-yellow: #ffff00;
+  --neon-green: #39ff14;
+  --dark-bg: #0a0a0a;
+  --text-color: #e0e0e0;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.profile-pic {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  object-fit: scale-down;
+  border-radius: 50%;
+  border: 7px solid var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue);
+  animation: glow 2s infinite alternate;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px 10px #ff009d;
+    animation: rotate 2s linear infinite;  /* Animation continue de la rotation */
+
+  }
+
+  
+  /* Définir l'animation de rotation */
+  @keyframes rotate {
+    from {
+      transform: rotateY(0deg);  /* Démarre la rotation à 0 degrés */
+    }
+    to {
+      transform: rotateY(360deg); /* Effectue une rotation complète (360 degrés) */
+    }
+  }
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 15px var(--neon-blue);
+  }
+  to {
+    box-shadow: 0 0 30px var(--neon-blue), 0 0 50px var(--neon-pink);
+  }
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.glitch {
+  position: relative;
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--neon-pink);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--neon-yellow);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(44px, 450px, 56px, 0);
+  }
+  20% {
+    clip: rect(12px, 450px, 92px, 0);
+  }
+  40% {
+    clip: rect(76px, 450px, 28px, 0);
+  }
+  60% {
+    clip: rect(33px, 450px, 67px, 0);
+  }
+  80% {
+    clip: rect(89px, 450px, 11px, 0);
+  }
+  100% {
+    clip: rect(55px, 450px, 45px, 0);
+  }
+}
+
+.contact-info {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+  text-shadow: 0 0 5px var(--neon-green);
+}
+
+.neon {
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
+  position: relative;
+  display: inline-block;
+}
+
+.neon::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--neon-pink);
+  box-shadow: 0 0 10px var(--neon-pink);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.neon:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--neon-blue);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+section:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.job {
+  margin-bottom: 1.5rem;
+  border-left: 2px solid var(--neon-yellow);
+  padding-left: 1rem;
+}
+
+.job h3 {
+  color: var(--neon-yellow);
+  margin-bottom: 0.5rem;
+}
+
+.company {
+  font-style: italic;
+  color: var(--neon-blue);
+}
+
+.date {
+  font-size: 0.9rem;
+  color: var(--neon-pink);
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 0.5rem;
+}
+
+li::before {
+  content: '>';
+  color: var(--neon-green);
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cyberpunk-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cyberpunk-lines::before,
+.cyberpunk-lines::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--neon-blue), transparent);
+  animation: scan-line 8s linear infinite;
+}
+
+.cyberpunk-lines::before {
+  top: 0;
+}
+
+.cyberpunk-lines::after {
+  bottom: 0;
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.skills ul, .education ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skills li, .education li {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.skills li:hover, .education li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.languages p, .additional p {
+  border-left: 2px solid var(--neon-green);
+  padding-left: 1rem;
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skills ul, .education ul {
+    flex-direction: column;
+  }
+}
+
